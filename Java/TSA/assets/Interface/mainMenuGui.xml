@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <useStyles filename="nifty-default-styles.xml" />
+    <useControls filename="nifty-default-controls.xml" />    
+    <screen id="empty" controller="Engine.Gui.MainMenuGuiController">
+    </screen>
+    <screen id="start" controller="Engine.Gui.MainMenuGuiController">
+        <layer id="background" backgroundColor="#0000">
+            <!-- ... -->
+        </layer>
+        <layer id="foreground" backgroundColor="#0000" childLayout="center">
+            <panel id="superPanel"  height="50%" align="center" valign="center" childLayout="vertical">
+                <panel id="button2" marginBottom="20px" height="10%" width="35%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >
+                        <interact onClick="goToCampaign()"/>
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="1000" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="750"/>
+
+                            <onEndScreen name="move" mode="out" direction="left" length="250" startDelay="0" inherit="true"/>
+                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>                           
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                        </effect>
+                        <text id="text2" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Enter Campaign" align="left" valign="center" />
+                    </image>
+                </panel>
+                <panel id="button3" marginBottom="20px" height="10%" width="35%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >                   
+                        <interact onClick="goToEditor()"/>
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="1250" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="1000"/>
+                            
+                            <onEndScreen name="move" mode="out" direction="left" length="250" startDelay="250" inherit="true"/>
+                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>                           
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                        </effect>
+                        <text id="text3" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Enter Editor" align="left" valign="center" />
+                    </image> 
+                </panel>
+                <panel id="button4" marginBottom="20px" height="10%" width="35%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >
+                        <interact onClick="goToOptions()"/>
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="1500" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="1250"/>
+                            
+                            <onEndScreen name="move" mode="out" direction="left" length="250" startDelay="500" inherit="true"/>
+                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                        </effect>
+                        <text id="text4" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Options" align="left" valign="center" />
+                    </image>
+                </panel>
+                <panel id="button5" marginBottom="20px" height="10%" width="35%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >                   
+                        <interact onClick="quit()"/>
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="1750" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="1500"/>
+                            
+                            <onEndScreen name="move" mode="out" direction="left" length="250" startDelay="750" inherit="true"/>
+                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>                           
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                        </effect>
+                        <text id="text5" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Quit" align="left" valign="center" />
+                    </image>
+                </panel>
+            </panel>
+        </layer>
+    </screen>
+    
+    <screen id="options" controller="Engine.Gui.MainMenuGuiController">
+        <layer id="foreground" backgroundColor="#0000" childLayout="center">
+            <panel id="superPanel" height="100%" align="center" valign="center" childLayout="vertical">
+                <panel id="button1" marginBottom="25px" marginTop="25px" height="5%" width="35%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >
+                        <interact onClick="goToMain()"/>
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="0" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="100"/>
+                            
+                            <onEndScreen name="move" mode="out" direction="left" length="250" startDelay="0" inherit="true"/>
+                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>                           
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                        </effect>
+                        <text id="textButton" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Back" align="left" valign="center" />
+                    </image>
+                </panel>
+                
+                <panel id="panel1" height="90%" width="40%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainPanel.png" childLayout="vertical" filter="true" width="100%" height="100%" >                   
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="250" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="800" startDelay="250"/>  
+                            
+                            <onEndScreen name="move" mode="out" direction="left" length="250" startDelay="250" inherit="true"/>                      
+                        </effect>
+                        
+                        <panel id="graphics" height="50%" width="100%" childLayout="vertical">
+                            <panel id="graphicsSub1" childLayout="horizontal">
+                                <text id="text1" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" height="30%" valign="center" text="SSAO"/>
+                                <control id="simpleCheckBoxSSAO" name="checkbox" checked="true" marginLeft="20px" valign="center" align="right"/>
+                            </panel>
+                            
+                            <panel id="graphicsSub2" childLayout="horizontal">
+                                <text id="text2" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" height="30%" valign="center" text="Depth of Field"/>
+                                <control id="simpleCheckBoxDOF" name="checkbox" checked="true" marginLeft="20px" valign="center" align="right"/>
+                            </panel>
+                            
+                            <panel id="graphicsSub3" childLayout="horizontal">
+                                <text id="text3" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" height="30%" valign="center" text="Show FPS"/>
+                                <control id="simpleCheckBoxFPS" name="checkbox" checked="false" marginLeft="20px" valign="center" align="right"/>
+                            </panel>
+                        </panel>
+                    </image>
+                </panel>
+            </panel>
+        </layer>
+    </screen>
+    
+    <screen id="levelCreate" controller="Engine.Gui.MainMenuGuiController">
+        <layer id="foreground" backgroundColor="#0000" childLayout="center">
+            <panel id="superPanelCreate" height="100%" align="center" valign="center" childLayout="vertical">
+                <panel id="button1create" marginTop="20px" height="5%" width="50%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="false">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >
+                        <!--<interact onClick="loadSavedLevel()"/>-->
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="0" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="0"/>
+
+                            <onEndScreen name="move" mode="out" direction="left" length="250" startDelay="0" inherit="true"/>
+<!--                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>                           
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>-->
+                        </effect>
+                        <text id="text2" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Load Saved (Disabled for Judging Laptop)" align="left" valign="center" />
+                    </image>
+                </panel>
+                
+                <panel id="button2create" marginBottom="25px" marginTop="25px" height="5%" width="35%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >
+                        <interact onClick="createNewLevel()"/>
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="250" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="250"/>
+                            
+                            <onEndScreen name="move" mode="out" direction="left" length="250" startDelay="0" inherit="true"/>
+                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>                           
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                        </effect>
+                        <text id="textButton" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Create New" align="left" valign="center" />
+                    </image>
+                </panel>
+            </panel>
+        </layer>
+    </screen>
+    
+    <screen id="levelName" controller="Engine.Gui.MainMenuGuiController">
+        <layer id="foreground" backgroundColor="#0000" childLayout="center">
+            <control id="window" name="window" title="Name Map" visibleToMous="true" closeable="false" width="300px" height="150px" x="400px">
+                <panel id="super" valign="center" align="center" childAlign="center" childLayout="vertical">
+                    <panel id="subTop" width="50%" childLayout="vertical" align="center" childAlign="center">
+                        <control id="name" name="textfield" align="center" maxLength="20" />
+                    </panel>
+                    <panel id="subBottom" width="100%" childLayout="vertical" childAlign="center" backgroundColor="#FFF0">
+                        <control id="acceptCreate" marginTop="20px" marginBottom="20px" align="center" name="button" label="Accept" visibleToMouse="true">
+                            <interact onClick="startLevel()"/>
+                        </control>
+                        <control id="cancelCreate" name="button" label="Cancel" align="center" visibleToMouse="true">
+                            <interact onClick="goToMain()"/>
+                        </control>
+                    </panel>
+                </panel>
+            </control>
+        </layer>
+    </screen>
+    
+    <screen id="levelLoad" controller="Engine.Gui.MainMenuGuiController">
+        <layer id="foreground" backgroundColor="#0000" childLayout="center">
+            <control id="window" name="window" title="Name of Map to Load" visibleToMous="true" closeable="false" width="300px" height="150px" x="400px">
+                <panel id="super" valign="center" align="center" childAlign="center" childLayout="vertical">
+                    <panel id="subTop" width="50%" childLayout="vertical" align="center" childAlign="center">
+                        <control id="name" name="textfield" align="center" maxLength="20" />
+                    </panel>
+                    <panel id="subBottom" width="100%" childLayout="vertical" childAlign="center" backgroundColor="#FFF0">
+                        <control id="accept" marginTop="20px" marginBottom="20px" align="center" name="button" label="Accept" visibleToMouse="true">
+                            <interact onClick="beginLoadedLevel()"/>
+                        </control>
+                        <control id="cancel" name="button" label="Cancel" align="center" visibleToMouse="true">
+                            <interact onClick="goToMain()"/>
+                        </control>
+                    </panel>
+                </panel>
+            </control>
+        </layer>
+    </screen>
+    
+    <screen id="campaignSettings" controller="Engine.Gui.MainMenuGuiController">
+        <layer id="foreground" backgroundColor="#0000" childLayout="center">
+        </layer>
+    </screen>
+    
+    <screen id="end" controller="Engine.Gui.MainMenuGuiController">
+    </screen>
+</nifty>

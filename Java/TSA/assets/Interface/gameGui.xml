@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <screen id="start0" controller="Engine.Gui.GameGuiController">
+        
+    </screen>
+    <screen id="pause" controller="Engine.Gui.GameGuiController">
+        <layer id="layer" backgroundColor="#0000" childLayout="center">
+            <panel id="superPanel"  height="50%" align="center" valign="center" childLayout="vertical">
+                <panel id="button2" marginBottom="20px" height="10%" width="35%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >
+                        <interact onClick="resumeGame()"/>
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="0" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="0"/>
+                            
+                            <!--<onEndScreen name="move" mode="out" direction="left" length="250" startDelay="0" inherit="true"/>-->
+                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>                           
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                        </effect>
+                        <text id="text2" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Resume Game" align="left" valign="center" />
+                    </image>
+                </panel>
+                <panel id="button3" marginBottom="20px" height="10%" width="35%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >                   
+                        <interact onClick="goToMainMenu()"/>
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="250" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="250"/>
+                            
+                            <onEndScreen name="move" mode="out" direction="left" length="250" startDelay="250" inherit="true"/>
+                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>                           
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                        </effect>
+                        <text id="text3" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Go To Main Menu" align="left" valign="center" />
+                    </image> 
+                </panel>
+                <panel id="button4" marginBottom="20px" height="10%" width="35%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >
+                        <interact onClick="quit()"/>
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="500" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="500"/>
+                            
+                            <!--<onEndScreen name="move" mode="out" direction="left" length="250" startDelay="500" inherit="true"/>-->
+                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                        </effect>
+                        <text id="text4" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Quit" align="left" valign="center" />
+                    </image>
+                </panel>
+            </panel>
+        </layer>
+    </screen>
+    
+    <screen id="endGame" controller="Engine.Gui.GameGuiController">
+        <layer id="layer" backgroundColor="#0000" childLayout="center">
+            <panel id="superPanel"  height="50%" align="center" valign="center" childLayout="vertical">
+                <panel id="panel1" height="40%" width="40%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainPanel.png" childLayout="vertical" filter="true" width="100%" height="100%" >                   
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="0" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="800" startDelay="250"/>  
+                            
+                            <onEndScreen name="move" mode="out" direction="left" length="250" startDelay="250" inherit="true"/>                      
+                        </effect>
+                        <text id="text1" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Congratulations, you've compeleted the first" align="left" valign="center" />
+                        <text id="text2" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="5 levels of Vox|Escape!" align="left" valign="center" />
+                        <text id="text3" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="We hope you enjoyed the experience." align="left" valign="center" />
+                        <text id="text4" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Press ESCAPE to release the mouse." align="left" valign="center" />
+                    </image>
+                </panel>
+                <panel id="button2" marginBottom="20px" marginTop="20px" height="10%" width="35%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >
+                        <interact onClick="goToMainMenu()"/>
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="250" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="0"/>
+                            
+                            <onEndScreen name="move" mode="out" direction="left" length="250" startDelay="0" inherit="true"/>
+                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>                           
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                        </effect>
+                        <text id="text5" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Go To Main Menu" align="left" valign="center" />
+                    </image>
+                </panel>
+                <panel id="button3" marginBottom="20px" height="10%" width="35%" align="left" valign="center" backgroundColor="#0000" childLayout="center" visibleToMouse="true">
+                    <image filename="Textures/mainButton.png" childLayout="center" filter="true" width="100%" height="100%" >
+                        <interact onClick="quit()"/>
+                        <effect>
+                            <onStartScreen name="move" mode="fromOffset" offsetX="-500" direction="left" length="500" startDelay="500" inherit="true"/>
+                            <onStartScreen name="fade" start="#0" end="#F" length="1000" startDelay="0"/>
+                            
+                            <!--<onEndScreen name="move" mode="out" direction="left" length="250" startDelay="0" inherit="true"/>-->
+                            <onHover name="imageSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>                           
+                            <onHover name="textSize" maxSize="10%">
+                                <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                            </onHover>
+                        </effect>
+                        <text id="text6" font="Fonts/primer.fnt" marginLeft="20px" color="#FFFF" text="Quit" align="left" valign="center" />
+                    </image>
+                </panel>
+                
+            </panel>
+        </layer>
+    </screen>
+</nifty>

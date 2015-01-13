@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <useStyles filename="nifty-default-styles.xml" />
+    <useControls filename="nifty-default-controls.xml" />
+    <screen id="start">
+        <layer id="background" backgroundColor="#FFF0">
+            <!-- ... -->
+        </layer>
+        <layer id="foreground" backgroundColor="#FFF0" childLayout="vertical">
+    
+        </layer>
+    </screen>
+    <screen id="hud" controller="Engine.Gui.EditorGuiController">
+        <layer id="windows" backgroundColor="#0000" childLayout="center">
+            <control id="window" name="window" title="Color Selection" visibleToMous="true" closeable="false" width="400px" height="300px" x="400px">
+                <panel id="super" valign="center" align="center" childLayout="horizontal">
+                    <panel id="subLeft" valign="center" align="center" width="30%" childLayout="vertical">
+                        <panel id="sub1" height="89%" valign="center" childLayout="horizontal" >
+                            <control id="sliderRed" name="verticalSlider" width="25px" height="90%" buttonStepSize="0.04" stepSize="0.00392156862" initial="0" min="0" max="1"></control>
+                            <control id="sliderGreen" name="verticalSlider" width="25px" height="90%" buttonStepSize="0.04" stepSize="0.00392156862" initial="0" min="0" max="1"></control>
+                            <control id="sliderBlue" name="verticalSlider" width="25px" height="90%" buttonStepSize="0.04" stepSize="0.00392156862" initial="0" min="0" max="1"></control>
+                        </panel>
+                        <panel id="sub2" height="1%" valign="center" childLayout="horizontal">
+                            <text name="label" id="label" align="center" width="25px" height="-25px" font="Fonts/primer.fnt" color="#FFF" text="R" />
+                            <text name="label2" id="label" align="center" width="25px" height="-25px" font="Fonts/primer.fnt" color="#FFF" text="G" />
+                            <text name="label3" id="label" align="center" width="25px" height="-25px" font="Fonts/primer.fnt" color="#FFF" text="B" />
+                        </panel>
+                    </panel>
+                    <panel id="subRight" valign="center" align="center" width="70%" childLayout="vertical" backgroundColor="#FFF0">
+                        <panel id="sub" height="20%" valign="center" childLayout="vertical" >
+                            <control id="sliderRadius" name="horizontalSlider" width="100%" buttonStepSize="1" stepSize=".1" initial="5" min="1" max="50"></control>
+                            <text id="labelRadius" align="center" font="Fonts/primer.fnt" color="#FFF" text="Radius: 5" ></text>
+                        </panel>
+                        <panel id="colorPanel" width="100%" height="65%" childLayout="vertical" backgroundColor="#FFF">
+
+                        </panel>
+                        <panel id="buttonPanel" width="100%" height="15%" childLayout="center" backgroundColor="#FFF0">
+                            <control id="accept" name="button" label="Accept" visibleToMouse="true">
+                                <interact onClick="toggleLightGui()"/>
+                            </control>
+                        </panel>
+                    </panel>
+                </panel>
+            </control>
+        </layer>
+    </screen>
+    <screen id="saveGame" controller="Engine.Gui.EditorGuiController">
+        <layer id="windows" backgroundColor="#0000" childLayout="center">
+            <control id="window" name="window" title="Save Map" visibleToMous="true" closeable="false" width="300px" height="150px" x="400px">
+                <panel id="super" valign="center" align="center" childAlign="center" childLayout="vertical">
+                    <panel id="subTop" width="50%" childLayout="vertical" align="center" childAlign="center">
+                        <control id="name" name="textfield" align="center" maxLength="20" />
+                    </panel>
+                    <panel id="subTop2" width="50%" childLayout="vertical" align="center" childAlign="center">
+                        <control id="saveLevel" name="textfield" align="center" maxLength="20" />
+                    </panel>
+                    <panel id="subBottom" width="100%" childLayout="vertical" childAlign="center" backgroundColor="#FFF0">
+<!--                        <control id="accept" marginTop="4px" marginBottom="1px" align="center" name="button" label="Accept" visibleToMouse="false">
+                            <interact onClick="saveGame()"/>
+                        </control>-->
+                        <control id="cancel" marginTop="4px" marginBottom="1px" name="button" label="Cancel" align="center" visibleToMouse="true">
+                            <interact onClick="goToEditor()"/>
+                        </control>
+                        <control id="quit" marginTop="1px" marginBottom="1px" width="100%" name="button" label="Saving is disabled because of rules. Click to quit." align="center" visibleToMouse="true">
+                            <interact onClick="quit()"/>
+                        </control>
+                    </panel>
+                </panel>
+            </control>
+        </layer>
+    </screen>
+    <screen id="empty">
+    
+    </screen>
+</nifty>

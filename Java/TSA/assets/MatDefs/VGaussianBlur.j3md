@@ -1,0 +1,30 @@
+MaterialDef VGaussianBlur {
+
+    MaterialParameters {
+        Int NumSamples
+        Float blur;
+        Texture2D Texture
+    }
+
+    Technique {
+        VertexShader GLSL150: Common/MatDefs/Post/Post15.vert
+        FragmentShader GLSL150: Shaders/VGaussianBlur.frag
+
+        WorldParameters {
+            WorldViewProjectionMatrix
+        }
+
+        Defines {
+            RESOLVE_MS : NumSamples
+        }
+    }
+
+    Technique {
+        VertexShader GLSL100: Common/MatDefs/Post/Post.vert
+        FragmentShader GLSL100: Shaders/VGaussianBlur.frag
+
+        WorldParameters {
+            WorldViewProjectionMatrix
+        }
+    }
+}
