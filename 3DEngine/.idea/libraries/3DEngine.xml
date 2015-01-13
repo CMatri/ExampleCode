@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="3DEngine">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/3DEngine_jar/3DEngine.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,55 @@
+#define PI    3.14159265
+
+vec2 rand(in vec2 coord) {
+    float noiseX = (fract(sin(dot(coord ,vec2(12.9898,78.233))) * 43758.5453));
+    float noiseY = (fract(sin(dot(coord ,vec2(12.9898,78.233)*2.0)) * 43758.5453));
+    return vec2(noiseX, noiseY) * 0.004;
+}
+
+float compareDepths( in float depth1, in float depth2, float far, float near ) {
+    float aoCap = 1.0;
+    float aoMultiplier = 100.0;
+    float depthTolerance = 0.0000;
+    float aorange = 60.0;// units in space the AO effect extends to (this gets divided by the camera far range
+    float diff = sqrt(clamp(1.0-(depth1-depth2) / (aorange/(far-near)),0.0,1.0));
+    float ao = min(aoCap,max(0.0,depth1-depth2-depthTolerance) * aoMultiplier) * diff;
+    return ao;
+}
+
+float readDepth(in vec2 coord, sampler2D depthTex) {
+        return (2.0 * 0.01) / (1000 + 0.01 - texture2D(depthTex, coord ).x * (1000 - 0.01));
+}
+
+float getSSAO(float depth, vec2 texCoord, int samples, int rings, sampler2D depthTex) {
+    float d;
+
+    float aspect = 1080/720;
+    vec2 noise = rand(texCoord);
+
+    float w = (1.0 / 1080) / clamp(depth, 0.05, 1.0);// + (noise.x * (1.0 - noise.x));
+    float h = (1.0 / 720) / clamp(depth, 0.05, 1.0);// + (noise.y * (1.0 - noise.y));
+
+    float pw;
+    float ph;
+
+    float ao;
+    float s;
+    float fade = 1.0;
+
+    for(int i = 0; i < rings; i+= 1) {
+        fade *= 0.5;
+        for(int j = 0; j < samples * i; j += 1) {
+            float step = PI * 2.0 / (samples * float(i));
+            pw = (cos(float(j) * step) * float(i));
+            ph = (sin(float(j) * step) * float(i)) * aspect;
+            d = readDepth(vec2(texCoord.s + pw * w, texCoord.t + ph * h), depthTex);
+            ao += compareDepths(depth, d, 1000, 0.01) * fade;
+            s += 1.0 * fade;
+        }
+    }
+
+    ao /= s;
+    ao = 1.0 - ao;
+
+    return ao;
+}

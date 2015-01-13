@@ -1,0 +1,22 @@
+#version 120
+#include "lighting.glh"
+
+varying vec2 texCoord0;
+varying mat3 tbnMatrix;
+varying vec3 worldPos0;
+
+uniform sampler2D diffuse;
+uniform sampler2D normalMap;
+uniform sampler2D parallaxMap;
+uniform float scale;
+uniform float bias;
+uniform PointLight R_pointLight;
+
+void main() {
+    float height1 = scale * (texture2D(parallaxMap, texCoord0.xy).r - 0.5);
+    vec2 offset1 = normalize(height1 * vec2(C_eyePos.x, C_eyePos.y));
+
+    vec3 normal = normalize(tbnMatrix * (2 * (texture2D(normalMap, offset1.xy).xyz) - 1));
+
+	gl_FragColor = texture2D(diffuse, offset1.xy) * calcPointLight(R_pointLight, normal, worldPos0);
+}
